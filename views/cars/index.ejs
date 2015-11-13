@@ -29,7 +29,10 @@
       <li><b>Manufactured :    </b> <%= new Date(car.manufactured).toDateString() %></li>
       <li><b>Color :            </b> <%= car.color %></li>
       <li><b>Carmodel :          </b> <%= car.carmodel %></li>
-      <button class="btn btn-danger col-md-12">Delete</button>
+      <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn btn-danger col-xd-12">Delete</button>
+      </form>
+      <a href="/cars/<%= car._id %>/edit" class="btn btn-warning col-xd-12">Edit</a>
       </li>
     </ul>
   </li>

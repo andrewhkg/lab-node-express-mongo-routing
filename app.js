@@ -5,6 +5,7 @@ var logger          = require('morgan');
 var mongoose        = require('mongoose');
 var bodyParser      = require('body-parser');
 var expressLayouts  = require('express-ejs-layouts');
+var methodOverride  = require('method-override');
 // var ejs             = require('ejs');
 
 var app     = express();
@@ -30,6 +31,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
+app.use(express.static('public'))
 
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
@@ -50,6 +53,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.use(require('./controllers/cars'));
-
 app.listen(port);
 
