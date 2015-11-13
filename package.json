@@ -1,0 +1,30 @@
+{
+  "name": "lab-node-express-mongo-routing",
+  "version": "1.0.0",
+  "description": "## Introduction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewhkg/lab-node-express-mongo-routing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewhkg/lab-node-express-mongo-routing/issues"
+  },
+  "homepage": "https://github.com/andrewhkg/lab-node-express-mongo-routing#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "debug": "^2.2.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1",
+    "path": "^0.12.7"
+  }
+}

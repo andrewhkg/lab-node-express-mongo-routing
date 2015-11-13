@@ -1,0 +1,38 @@
+<fieldset>
+  <legend>Add a car sparepart</legend>
+  <form method="POST" action="/cars">
+    <div class="form-group col-md-4">
+      <input name="car[namepart]" class="form-control" placeholder="Name of spare parts"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="car[carmodel]"  class="form-control" placeholder="Model of car"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input name="car[color]"  class="form-control" placeholder="Color"/>
+    </div>
+    <div class="form-group col-md-4">
+      <input type="date" name="car[manufactured]"  class="form-control" placeholder="Year of manufacture"/>
+    </div>
+    <div class="form-group col-md-4">
+      <button class="btn btn-success col-md-12">Add a spare part</button>
+    </div>
+  </form>
+</fieldset>
+
+<ul>
+<h3>List of spareparts</h3>
+<% cars.forEach(function(car){ %>
+  <li>
+    <h2><%= car.name %></h2>
+    <ul>
+      <li><b>Name :            </b> <%= car.namepart %></li>
+      <li><b>Manufactured :    </b> <%= new Date(car.manufactured).toDateString() %></li>
+      <li><b>Color :            </b> <%= car.color %></li>
+      <li><b>Carmodel :          </b> <%= car.carmodel %></li>
+      <button class="btn btn-danger col-md-12">Delete</button>
+      </li>
+    </ul>
+  </li>
+<% }) %>
+
+</ul>
