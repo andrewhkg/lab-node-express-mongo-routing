@@ -13,7 +13,9 @@ var port    = process.env.PORT || 3000;
 var router  = express.Router();
 
 var moongoose = require('mongoose');
-moongoose.connect('mongodb://127.0.0.1/carpart');
+var mongoUri  = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/carpart';
+
+moongoose.connect(mongoUri);
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
