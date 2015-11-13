@@ -5,7 +5,12 @@ var express    = require('express'),
 
 var Car = require("../models/car");
 
+
 //INDEX
+router.get("/", function(req, res){
+  res.redirect('/cars');
+})
+
 router.get("/cars", function(req, res){
   Car.find({}, function (err, cars) { // cars = [{obj},{obj}]
     res.render('cars/index', { cars: cars });
