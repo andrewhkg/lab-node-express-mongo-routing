@@ -1,4 +1,5 @@
-var express         = require('express');
+var express         = require('express')
+             , http = require('http');
 var path            = require('path');
 var debug           = require('debug');
 var logger          = require('morgan');
@@ -6,7 +7,7 @@ var mongoose        = require('mongoose');
 var bodyParser      = require('body-parser');
 var expressLayouts  = require('express-ejs-layouts');
 var methodOverride  = require('method-override');
-// var ejs             = require('ejs');
+
 
 var app     = express();
 var port    = process.env.PORT || 3000;
@@ -20,21 +21,21 @@ moongoose.connect(mongoUri);
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 Car = require("./models/car");
+app.use(methodOverride('_method'));
+app.use('/', express.static(__dirname + '/public'));
 
-// app.use(function(req, res, next){
-//   console.log('%s request to %s from %s',
-//         req.method, //GET
-//         req.path, // /
-//         req.ip); // ::1
-//   next();
-// });
-
-app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
+app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-app.use(methodOverride('_method'));
-app.use(express.static('public'))
+
+app.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
 
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {

@@ -11,11 +11,20 @@ router.get("/", function(req, res){
   res.redirect('/cars');
 })
 
-router.get("/cars", function(req, res){
-  Car.find({}, function (err, cars) { // cars = [{obj},{obj}]
-    res.render('cars/index', { cars: cars });
-  });
-})
+// INDEX
+router.get('/cars', function(req, res) {
+  Car.find({})
+      .sort({ carmodel: -1 })
+      .exec(function(err, cars) {
+        res.render('cars/index', { cars: cars});
+      });
+});
+
+// router.get("/cars", function(req, res){
+//   Car.find({}, function (err, cars) { // cars = [{obj},{obj}]
+//     res.render('cars/index', { cars: cars });
+//   });
+// })
 
 //CREATE
 router.post("/cars", function(req, res){
@@ -46,6 +55,7 @@ router.get("/cars/:id/edit", function(req, res){
 
 //UPDATE
 router.put("/cars/:id", function(req, res){
+  console.log(req.body.car);
   Car.findByIdAndUpdate(req.params.id, req.body.car ,function(err, car){
     if (!car || err) { res.send(err) }
     res.redirect('/cars');

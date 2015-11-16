@@ -1,3 +1,12 @@
 .car-app h1 {
   color: red;
 }
+
+.photo {
+  width: 150px;
+}
+
+.well {
+background-image: -webkit-linear-gradient(top, whiteSmoke 0%,#EEE 100%);
+background-color: #efefef;
+}
